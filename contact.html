@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Apricus Online School</title>
+<meta name="description" content="Get in touch with Apricus Online School. WhatsApp +371 28491663, email apricus.edu.service@gmail.com, or use the contact form.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23e8a838'/%3E%3C/svg%3E">
+<style>
+  /* CONTACT PAGE */
+
+  .contact-section {
+    padding: var(--space-xl) var(--container-padding);
+    background: var(--color-cream);
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* Left side - info */
+  .contact-info h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  .contact-info h2 em {
+    font-style: italic;
+    color: var(--color-amber);
+  }
+
+  .contact-info > p {
+    font-size: 1.1rem;
+    color: var(--color-stone);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgba(26, 20, 16, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .contact-method:hover {
+    border-color: var(--color-amber);
+    transform: translateX(6px);
+    box-shadow: 0 12px 24px -8px rgba(196, 121, 31, 0.15);
+  }
+
+  .contact-method-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .contact-method:hover .contact-method-icon {
+    background: var(--color-amber);
+  }
+
+  .contact-method-text h3 {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-amber);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+
+  .contact-method-text p {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .contact-method-text a {
+    color: inherit;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover {
+    background: var(--color-amber);
+    transform: translateY(-3px);
+  }
+
+  /* Right side - form */
+  .contact-form-wrap {
+    background: white;
+    border-radius: 28px;
+    padding: 3rem;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.08);
+    border: 1px solid rgba(26, 20, 16, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 168, 56, 0.1), transparent 70%);
+  }
+
+  .contact-form-wrap h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .contact-form-wrap h3 em {
+    font-style: italic;
+    color: var(--color-amber);
+  }
+
+  .contact-form-wrap > p {
+    color: var(--color-stone);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: relative;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-amber);
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.85rem 1rem;
+    background: var(--color-cream);
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: var(--font-body);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-amber);
+    background: white;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--color-mist);
+  }
+
+  .contact-form button[type="submit"] {
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+
+  /* Office hours block */
+  .hours-section {
+    padding: var(--space-lg) var(--container-padding);
+    background: var(--color-paper);
+    position: relative;
+    z-index: 2;
+  }
+
+  .hours-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .hours-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid rgba(26, 20, 16, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .hours-card:hover {
+    border-color: var(--color-amber);
+    transform: translateY(-4px);
+  }
+
+  .hours-card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hours-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .hours-card h3 em {
+    font-style: italic;
+    color: var(--color-amber);
+  }
+
+  .hours-card p {
+    color: var(--color-stone);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .hours-card .time {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-amber);
+    margin-top: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 968px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hours-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .contact-form-wrap { padding: 2rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Class →</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-content">
+    <div class="eyebrow fade-up">Contact · Reply within 24 hours</div>
+    <h1 class="fade-up delay-1">Let's <em>begin</em><br>the conversation.</h1>
+    <p class="fade-up delay-2">Whether you're ready to enroll or just exploring options — drop us a line. We'll respond personally and quickly. No automated funnels, no pushy follow-ups.</p>
+  </div>
+</header>
+
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <h2>Multiple ways<br>to <em>reach us.</em></h2>
+      <p>The fastest way to reach us is WhatsApp — usually within an hour during working time. Email and the form below are checked daily.</p>
+
+      <div class="contact-methods">
+        <a href="https://wa.me/37128491663" class="contact-method">
+          <div class="contact-method-icon">💬</div>
+          <div class="contact-method-text">
+            <h3>WhatsApp · Fastest</h3>
+            <p>+371 28491663</p>
+          </div>
+        </a>
+
+        <a href="tel:+37128491663" class="contact-method">
+          <div class="contact-method-icon">📞</div>
+          <div class="contact-method-text">
+            <h3>Phone</h3>
+            <p>+371 28491663</p>
+          </div>
+        </a>
+
+        <a href="mailto:apricus.edu.service@gmail.com" class="contact-method">
+          <div class="contact-method-icon">✉</div>
+          <div class="contact-method-text">
+            <h3>Email</h3>
+            <p>apricus.edu.service@gmail.com</p>
+          </div>
+        </a>
+
+        <div class="contact-method">
+          <div class="contact-method-icon">📍</div>
+          <div class="contact-method-text">
+            <h3>Based in</h3>
+            <p>Riga, Latvia · Online worldwide</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://www.instagram.com/apricus_service" class="social-link" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/apricuservice/" class="social-link" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+        </a>
+        <a href="https://wa.me/37128491663" class="social-link" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <h3>Send us a <em>message</em></h3>
+      <p>Tell us what you're looking for. We'll respond within 24 hours.</p>
+
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="+371 ...">
+          </div>
+          <div class="form-group">
+            <label for="program">Interested In</label>
+            <select id="program" name="program">
+              <option value="">Select a program</option>
+              <option>English</option>
+              <option>Business English</option>
+              <option>IELTS / TOEFL Prep</option>
+              <option>Latvian</option>
+              <option>Russian</option>
+              <option>Spanish</option>
+              <option>German</option>
+              <option>Portuguese</option>
+              <option>Mathematics</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Tell us a bit about your goals, current level, and timeline..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message →</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>When we're <em>available</em></h2>
+      <p class="section-header-subtitle">Our team is based in Riga, but we teach across time zones. Lessons are scheduled to fit your local time.</p>
+    </div>
+
+    <div class="hours-grid">
+      <div class="hours-card observe">
+        <div class="hours-card-icon">☀</div>
+        <h3>Lesson <em>Hours</em></h3>
+        <p>Lessons run Monday through Saturday, with flexible scheduling around your availability.</p>
+        <div class="time">Mon — Sat · 09:00 — 21:00 EET</div>
+      </div>
+      <div class="hours-card observe">
+        <div class="hours-card-icon">💬</div>
+        <h3>Inquiry <em>Response</em></h3>
+        <p>WhatsApp and email inquiries are answered same-day during working hours, within 24 hours otherwise.</p>
+        <div class="time">Reply within 24h</div>
+      </div>
+      <div class="hours-card observe">
+        <div class="hours-card-icon">🌍</div>
+        <h3>Time <em>Zones</em></h3>
+        <p>Currently teaching learners across Europe, Central Asia, and the Middle East. We coordinate around your timezone.</p>
+        <div class="time">Worldwide · Online</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Apricus</h3>
+        <p class="footer-motto">Ad astra per aspera</p>
+        <p style="margin-top: 1rem;">Online education platform delivering personalized, results-driven language and academic training for students and professionals worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://wa.me/37128491663">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/apricus_service">Instagram</a></li>
+          <li><a href="https://www.facebook.com/apricuservice/">Facebook</a></li>
+          <li><a href="mailto:apricus.edu.service@gmail.com">Email</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>+371 28491663</li>
+          <li>apricus.edu.service@gmail.com</li>
+          <li>Riga, Latvia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Apricus Online School · All rights reserved</div>
+      <div class="footer-motto">Through difficulties to the stars ✦</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

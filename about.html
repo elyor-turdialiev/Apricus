@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Apricus Online School</title>
+<meta name="description" content="Founded in 2022, Apricus Online School is a multi-disciplinary education platform where flexibility, personalization and measurable progress come first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23e8a838'/%3E%3C/svg%3E">
+<style>
+  /* ABOUT PAGE STYLES */
+
+  .about-intro {
+    padding: var(--space-xl) var(--container-padding);
+    background: var(--color-cream);
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-intro-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-intro-text h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  .about-intro-text h2 em {
+    font-style: italic;
+    color: var(--color-amber);
+  }
+
+  .about-intro-text p {
+    font-size: 1.1rem;
+    color: var(--color-charcoal);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-visual {
+    position: relative;
+    aspect-ratio: 1;
+  }
+
+  .about-visual-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--color-sun), var(--color-amber) 60%, var(--color-terracotta));
+    position: relative;
+    box-shadow: 0 30px 80px -20px rgba(196, 121, 31, 0.4);
+  }
+
+  .about-visual-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: var(--font-display);
+  }
+
+  .about-visual-text .latin {
+    font-style: italic;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-visual-text .meaning {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.85;
+  }
+
+  .orbit {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border: 1px dashed var(--color-amber);
+    border-radius: 50%;
+    animation: rotate 40s linear infinite;
+    opacity: 0.4;
+  }
+
+  .orbit::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-amber);
+    font-size: 1.5rem;
+    background: var(--color-cream);
+    padding: 0 0.5rem;
+  }
+
+  /* VALUES */
+  .values-section {
+    background: var(--color-paper);
+    padding: var(--space-xl) var(--container-padding);
+    position: relative;
+    z-index: 2;
+  }
+
+  .values-list {
+    max-width: var(--max-width);
+    margin: var(--space-md) auto 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .value-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(26, 20, 16, 0.1);
+    align-items: start;
+    transition: padding 0.3s ease;
+  }
+
+  .value-row:hover {
+    padding-left: 1rem;
+  }
+
+  .value-row:last-child {
+    border-bottom: 1px solid rgba(26, 20, 16, 0.1);
+  }
+
+  .value-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-amber);
+    letter-spacing: 0.15em;
+    padding-top: 0.5rem;
+  }
+
+  .value-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .value-title em {
+    font-style: italic;
+    color: var(--color-amber);
+  }
+
+  .value-desc {
+    font-size: 1.05rem;
+    color: var(--color-charcoal);
+    line-height: 1.7;
+  }
+
+  /* TIMELINE */
+  .timeline-section {
+    background: var(--color-cream);
+    padding: var(--space-xl) var(--container-padding);
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline {
+    max-width: 800px;
+    margin: var(--space-md) auto 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-sun), var(--color-amber), var(--color-terracotta));
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2.5rem;
+    padding-bottom: 4rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 92px;
+    top: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-sun);
+    border: 3px solid var(--color-cream);
+    z-index: 2;
+  }
+
+  .timeline-year {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-amber);
+    text-align: right;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+  }
+
+  .timeline-content p {
+    color: var(--color-stone);
+    line-height: 1.7;
+  }
+
+  /* TEACHER SPOTLIGHT */
+  .teacher-section {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    padding: var(--space-xl) var(--container-padding);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .teacher-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 168, 56, 0.15), transparent 70%);
+  }
+
+  .teacher-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .teacher-portrait {
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--color-amber), var(--color-terracotta));
+    border-radius: 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .teacher-portrait::before {
+    content: 'E';
+    font-family: var(--font-display);
+    font-size: 18rem;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+  }
+
+  .teacher-portrait::after {
+    content: '';
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 80px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+  }
+
+  .teacher-badge {
+    position: absolute;
+    bottom: 2.25rem;
+    left: 2.25rem;
+    z-index: 2;
+    color: white;
+  }
+
+  .teacher-badge-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 0.25rem;
+  }
+
+  .teacher-badge-role {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.85;
+  }
+
+  .teacher-content .eyebrow {
+    color: var(--color-sun);
+  }
+
+  .teacher-content h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 1rem 0 2rem;
+  }
+
+  .teacher-content h2 em {
+    font-style: italic;
+    color: var(--color-sun);
+  }
+
+  .teacher-content blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    border-left: 3px solid var(--color-sun);
+    color: rgba(250,246,239,0.9);
+  }
+
+  .teacher-content p {
+    color: var(--color-mist);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 968px) {
+    .about-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-visual { max-width: 400px; margin: 0 auto; }
+    .value-row { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
+    .timeline::before { left: 8px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 1rem; padding-left: 50px; padding-bottom: 3rem; }
+    .timeline-item::before { left: 0; }
+    .timeline-year { text-align: left; }
+    .teacher-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .teacher-portrait { max-width: 300px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Class →</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-content">
+    <div class="eyebrow fade-up">About · Est. 2022</div>
+    <h1 class="fade-up delay-1">A school <em>warmed</em><br>by the sun.</h1>
+    <p class="fade-up delay-2">Apricus began with a single English class and a stubborn belief: that every learner deserves a tutor who knows their name, their goals, and their pace. Three years later, that belief has only grown stronger.</p>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="about-intro">
+  <div class="about-intro-grid">
+    <div class="about-intro-text">
+      <div class="eyebrow">Our Story</div>
+      <h2 style="margin-top: 1rem;">From one classroom to <em>seven subjects.</em></h2>
+      <p>Apricus Online School was founded in 2022 with a clear vision — to make language learning effective, personalized, and results-driven. What started as a focused English teaching practice has grown into a multi-disciplinary platform trusted by students with diverse goals.</p>
+      <p>As our students' needs evolved, we expanded from English to German, Spanish, Latvian, Russian, and Portuguese — along with Business English and Mathematics — helping learners achieve real academic, professional, and communication results.</p>
+      <p>Today, Apricus represents a modern approach to education, where flexibility, personalization, and measurable progress come first. We don't just teach — we deliver real progress.</p>
+    </div>
+
+    <div class="about-visual">
+      <div class="orbit"></div>
+      <div class="about-visual-circle">
+        <div class="about-visual-text">
+          <div class="latin">Apricus</div>
+          <div class="meaning">/ Sunny · Warmed by the Sun /</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>What we <em>stand for</em></h2>
+      <p class="section-header-subtitle">Six principles that shape every lesson, every learning plan, and every relationship we build with our students.</p>
+    </div>
+
+    <div class="values-list">
+      <div class="value-row observe">
+        <div class="value-num">/ 01</div>
+        <h3 class="value-title">Personalized <em>learning</em></h3>
+        <p class="value-desc">Every plan is tailored to your level, goals, and pace. We don't believe in one-size-fits-all curricula — we believe in lessons that fit you, and only you.</p>
+      </div>
+      <div class="value-row observe">
+        <div class="value-num">/ 02</div>
+        <h3 class="value-title">Real <em>results</em></h3>
+        <p class="value-desc">Confidence in speaking, fluency in writing, mastery of practical skills. We focus on what you'll actually use — and we measure progress, not effort alone.</p>
+      </div>
+      <div class="value-row observe">
+        <div class="value-num">/ 03</div>
+        <h3 class="value-title">Proven <em>+ modern</em></h3>
+        <p class="value-desc">Strong fundamentals meet interactive materials. We honor what works in language pedagogy while embracing what's new and effective.</p>
+      </div>
+      <div class="value-row observe">
+        <div class="value-num">/ 04</div>
+        <h3 class="value-title">All-in-one <em>platform</em></h3>
+        <p class="value-desc">Languages, Business English, exam prep, Mathematics — under one consistent standard. One tutor, multiple goals, seamless coordination.</p>
+      </div>
+      <div class="value-row observe">
+        <div class="value-num">/ 05</div>
+        <h3 class="value-title">Flexible <em>format</em></h3>
+        <p class="value-desc">Learn anytime, anywhere. Online doesn't mean impersonal — it means accessible. Your classroom is wherever you have a screen and a moment.</p>
+      </div>
+      <div class="value-row observe">
+        <div class="value-num">/ 06</div>
+        <h3 class="value-title">Ongoing <em>support</em></h3>
+        <p class="value-desc">Continuous guidance, homework help, and feedback between lessons. Your tutor isn't just a teacher — they're a partner in your journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>Our <em>journey</em></h2>
+      <p class="section-header-subtitle">From a single classroom in 2022 to a multi-subject platform serving learners across continents.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item observe">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-content">
+          <h3>The beginning</h3>
+          <p>Apricus is founded with a focused mission: deliver high-quality, personalized English instruction. The first cohort of students includes future teachers, IELTS candidates, and professionals seeking fluency.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-content">
+          <h3>Beyond English</h3>
+          <p>Driven by student demand, we expand into Latvian, Russian, Spanish, and German. The Online Speaking Club launches, giving students a low-pressure space to practice and build confidence.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">
+          <h3>New disciplines</h3>
+          <p>Mathematics joins the roster — a natural extension for students seeking academic support across subjects. Business English programs deepen with industry simulations and academic writing.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h3>Portuguese & beyond</h3>
+          <p>Portuguese is added to the language portfolio. The Personal Semester Assistant program launches, offering full academic support throughout the school year.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2026</div>
+        <div class="timeline-content">
+          <h3>Today, and tomorrow</h3>
+          <p>Apricus serves students across Europe, Central Asia, and beyond — with the same commitment to personalization that launched the school. The mission remains: <em>through difficulties to the stars.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHER SPOTLIGHT -->
+<section class="teacher-section">
+  <div class="teacher-grid">
+    <div class="teacher-portrait observe">
+      <div class="teacher-badge">
+        <div class="teacher-badge-name">Elyor</div>
+        <div class="teacher-badge-role">Founder · Lead Tutor</div>
+      </div>
+    </div>
+    <div class="teacher-content observe">
+      <div class="eyebrow">Behind the school</div>
+      <h2>Where <em>warmth</em> meets rigor.</h2>
+      <blockquote>"Teaching isn't about transmitting information. It's about lighting a fire — and then walking alongside someone as they tend it."</blockquote>
+      <p>Apricus was founded by Elyor — a teacher whose students consistently describe his style as confidence-building, patient, and refreshingly informal. Many of the testimonials you'll read on our site are from students who went on to become English teachers themselves.</p>
+      <p>That outcome — students becoming teachers — captures what Apricus is really about. Not just delivering lessons, but cultivating learners who eventually pay it forward.</p>
+      <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem; background: var(--color-sun); color: var(--color-ink);">Meet your tutor →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Apricus</h3>
+        <p class="footer-motto">Ad astra per aspera</p>
+        <p style="margin-top: 1rem;">Online education platform delivering personalized, results-driven language and academic training for students and professionals worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://wa.me/37128491663">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/apricus_service">Instagram</a></li>
+          <li><a href="https://www.facebook.com/apricuservice/">Facebook</a></li>
+          <li><a href="mailto:apricus.edu.service@gmail.com">Email</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>+371 28491663</li>
+          <li>apricus.edu.service@gmail.com</li>
+          <li>Riga, Latvia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Apricus Online School · All rights reserved</div>
+      <div class="footer-motto">Through difficulties to the stars ✦</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

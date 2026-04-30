@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apricus — Online Education Platform · Languages, Business English & Mathematics</title>
+<meta name="description" content="Apricus Online School — personalized one-on-one lessons in English, Latvian, Russian, Spanish, German, Portuguese and Mathematics. Through difficulties to the stars.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23e8a838'/%3E%3C/svg%3E">
+<style>
+  /* ==== HOMEPAGE-SPECIFIC STYLES ==== */
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 9rem var(--container-padding) 5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-paper) 100%);
+  }
+
+  .hero-sun {
+    position: absolute;
+    top: 15%;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--color-sun) 0%, var(--color-amber) 40%, transparent 70%);
+    opacity: 0.55;
+    animation: float 8s ease-in-out infinite;
+    filter: blur(2px);
+  }
+
+  .hero-rays {
+    position: absolute;
+    top: 12%;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    animation: rotate 60s linear infinite;
+    opacity: 0.4;
+  }
+
+  .hero-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-content {
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-amber);
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(196, 121, 31, 0.3);
+    border-radius: 100px;
+    background: rgba(255,255,255,0.5);
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-sun);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--color-amber);
+    font-weight: 400;
+  }
+
+  .hero h1 .underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero h1 .underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    width: 100%;
+    height: 0.15em;
+    background: var(--color-sun);
+    z-index: -1;
+    opacity: 0.4;
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+    color: var(--color-stone);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(26, 20, 16, 0.1);
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--color-ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-stone);
+  }
+
+  /* Hero card collage */
+  .hero-visual {
+    position: relative;
+    height: 600px;
+  }
+
+  .hero-card {
+    position: absolute;
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 60px -20px rgba(26, 20, 16, 0.25);
+    transition: transform 0.4s ease;
+  }
+
+  .hero-card:hover {
+    transform: translateY(-8px) rotate(0deg) !important;
+  }
+
+  .hero-card-1 {
+    top: 0;
+    right: 5%;
+    width: 280px;
+    transform: rotate(-3deg);
+    z-index: 3;
+  }
+
+  .hero-card-2 {
+    bottom: 8%;
+    left: 0;
+    width: 240px;
+    transform: rotate(2deg);
+    z-index: 2;
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+
+  .hero-card-3 {
+    top: 35%;
+    right: 0;
+    width: 200px;
+    transform: rotate(4deg);
+    z-index: 1;
+    background: var(--color-amber);
+    color: var(--color-cream);
+  }
+
+  .card-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-sun);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* MARQUEE */
+  .marquee-section {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    padding: 2.5rem 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+
+  .marquee {
+    display: flex;
+    gap: 4rem;
+    white-space: nowrap;
+    animation: scroll 35s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: 300;
+    display: inline-flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .marquee-item::after {
+    content: '✦';
+    color: var(--color-sun);
+    font-style: normal;
+    font-size: 1.5rem;
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* WHY APRICUS */
+  .why-section {
+    background: var(--color-cream);
+    padding: var(--space-xl) var(--container-padding);
+    position: relative;
+    z-index: 2;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: var(--space-md);
+  }
+
+  .why-card {
+    padding: 2.5rem;
+    background: var(--color-paper);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+  }
+
+  .why-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-sun);
+    background: white;
+    box-shadow: 0 24px 48px -16px rgba(196, 121, 31, 0.2);
+  }
+
+  .why-number {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-amber);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .why-card h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .why-card h3 em {
+    font-style: italic;
+    color: var(--color-amber);
+  }
+
+  .why-card p {
+    color: var(--color-stone);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* SUBJECTS PREVIEW */
+  .subjects-section {
+    background: var(--color-paper);
+    padding: var(--space-xl) var(--container-padding);
+    position: relative;
+    z-index: 2;
+  }
+
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: var(--space-md);
+  }
+
+  .subject-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: left;
+    border: 1.5px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .subject-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--bar-color, var(--color-sun));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .subject-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--bar-color, var(--color-sun));
+    box-shadow: 0 24px 48px -16px rgba(0,0,0,0.1);
+  }
+
+  .subject-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .subject-flag {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .subject-card h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .subject-card p {
+    font-size: 0.85rem;
+    color: var(--color-stone);
+    margin-bottom: 1rem;
+  }
+
+  .subject-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-amber);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section {
+    background: var(--color-cream);
+    padding: var(--space-xl) var(--container-padding);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonials-wrapper {
+    max-width: 900px;
+    margin: var(--space-md) auto 0;
+    position: relative;
+    min-height: 320px;
+  }
+
+  .testimonial-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .testimonial-slide.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--color-charcoal);
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding: 0 2rem;
+  }
+
+  .testimonial-quote::before,
+  .testimonial-quote::after {
+    content: '"';
+    font-size: 4rem;
+    color: var(--color-sun);
+    position: absolute;
+    line-height: 1;
+    font-style: normal;
+  }
+
+  .testimonial-quote::before {
+    top: -1rem;
+    left: 0;
+  }
+
+  .testimonial-quote::after {
+    content: '"';
+    bottom: -2rem;
+    right: 0;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .testimonial-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-amber);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .testimonial-info {
+    text-align: left;
+  }
+
+  .testimonial-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .testimonial-role {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-stone);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 3rem;
+  }
+
+  .testimonial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(26,20,16,0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+  }
+
+  .testimonial-dot.active {
+    background: var(--color-amber);
+    width: 32px;
+    border-radius: 4px;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: var(--space-xl) var(--container-padding);
+    background: var(--color-ink);
+    color: var(--color-cream);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 168, 56, 0.2) 0%, transparent 60%);
+  }
+
+  .cta-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-section h2 em {
+    font-style: italic;
+    color: var(--color-sun);
+  }
+
+  .cta-section p {
+    font-size: 1.2rem;
+    color: var(--color-mist);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-discount {
+    display: inline-block;
+    background: var(--color-sun);
+    color: var(--color-ink);
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .cta-section .btn-primary {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+
+  .cta-section .btn-primary:hover {
+    background: var(--color-cream);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 968px) {
+    .hero-container { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .subjects-grid { grid-template-columns: repeat(2, 1fr); }
+    .marquee-item { font-size: 1.5rem; gap: 2rem; }
+  }
+
+  @media (max-width: 640px) {
+    .subjects-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"></span>
+      <span>Apricus</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Class →</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-sun"></div>
+  <svg class="hero-rays" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c4791f" stroke-width="0.6" stroke-linecap="round" opacity="0.6">
+      <line x1="100" y1="20" x2="100" y2="40"/>
+      <line x1="100" y1="160" x2="100" y2="180"/>
+      <line x1="20" y1="100" x2="40" y2="100"/>
+      <line x1="160" y1="100" x2="180" y2="100"/>
+      <line x1="44" y1="44" x2="58" y2="58"/>
+      <line x1="142" y1="142" x2="156" y2="156"/>
+      <line x1="156" y1="44" x2="142" y2="58"/>
+      <line x1="58" y1="142" x2="44" y2="156"/>
+    </g>
+  </svg>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-eyebrow fade-up">Online Education Platform · Est. 2022</div>
+      <h1 class="fade-up delay-1">
+        Through<br>
+        <em>difficulties</em><br>
+        to the <span class="underline">stars</span>.
+      </h1>
+      <p class="hero-tagline fade-up delay-2">
+        Personalized one-on-one lessons in English, Latvian, Russian, Spanish, German, Portuguese and Mathematics — designed around your goals, your pace, your life.
+      </p>
+      <div class="hero-cta-group fade-up delay-3">
+        <a href="contact.html" class="btn btn-primary">
+          Start Learning →
+        </a>
+        <a href="programs.html" class="btn btn-secondary">
+          Browse Programs
+        </a>
+      </div>
+      <div class="hero-stats fade-up delay-4">
+        <div>
+          <div class="stat-number">7</div>
+          <div class="stat-label">Subjects Taught</div>
+        </div>
+        <div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">One-on-One</div>
+        </div>
+        <div>
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Years Trusted</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card hero-card-1 fade-up delay-2">
+        <div class="card-meta">📚 ENG · BUSINESS</div>
+        <h3 class="card-title">Business English Mastery</h3>
+        <p class="card-text">Industry vocabulary, presentations, and real business simulations.</p>
+      </div>
+      <div class="hero-card hero-card-2 fade-up delay-3">
+        <div class="card-icon">⭐</div>
+        <h3 class="card-title">IELTS / TOEFL</h3>
+        <p class="card-text" style="color: rgba(250,246,239,0.7)">11 intensive classes · 4 consultations · 2 mock exams</p>
+      </div>
+      <div class="hero-card hero-card-3 fade-up delay-4">
+        <div class="card-meta" style="color: rgba(250,246,239,0.7)">SPEAKING CLUB</div>
+        <h3 class="card-title">Talk. Confidently.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="marquee-section">
+  <div class="marquee">
+    <div class="marquee-item">English</div>
+    <div class="marquee-item">Latviešu</div>
+    <div class="marquee-item">Русский</div>
+    <div class="marquee-item">Español</div>
+    <div class="marquee-item">Deutsch</div>
+    <div class="marquee-item">Português</div>
+    <div class="marquee-item">Mathematics</div>
+    <div class="marquee-item">English</div>
+    <div class="marquee-item">Latviešu</div>
+    <div class="marquee-item">Русский</div>
+    <div class="marquee-item">Español</div>
+    <div class="marquee-item">Deutsch</div>
+    <div class="marquee-item">Português</div>
+    <div class="marquee-item">Mathematics</div>
+  </div>
+</section>
+
+<!-- WHY APRICUS -->
+<section class="why-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>Why <em>Apricus?</em></h2>
+      <p class="section-header-subtitle">
+        From Latin <em>apricus</em> — "warmed by the sun." We believe learning, like sunlight, should reach every learner directly and personally.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card observe">
+        <div class="why-number">/ 01</div>
+        <h3>Personalized <em>by design</em></h3>
+        <p>Every learning plan is tailored to your level, goals, and pace. No cohorts, no fixed curricula — just lessons that fit you.</p>
+      </div>
+      <div class="why-card observe">
+        <div class="why-number">/ 02</div>
+        <h3>Real, measurable <em>progress</em></h3>
+        <p>Mock exams, regular consultations, and progress tracking ensure you don't just learn — you advance, visibly and consistently.</p>
+      </div>
+      <div class="why-card observe">
+        <div class="why-number">/ 03</div>
+        <h3>Flexible, <em>everywhere</em></h3>
+        <p>Online and on your schedule. Whether you're in Riga, Tashkent, or anywhere in between — your classroom is wherever you are.</p>
+      </div>
+      <div class="why-card observe">
+        <div class="why-number">/ 04</div>
+        <h3>Proven <em>+ modern</em> methods</h3>
+        <p>Strong fundamentals meet interactive materials. We honor what works while embracing what's new in language pedagogy.</p>
+      </div>
+      <div class="why-card observe">
+        <div class="why-number">/ 05</div>
+        <h3>One platform, <em>many paths</em></h3>
+        <p>Languages, Business English, exam prep, and Mathematics — all under one roof, with consistent quality across every subject.</p>
+      </div>
+      <div class="why-card observe">
+        <div class="why-number">/ 06</div>
+        <h3>Ongoing <em>support</em></h3>
+        <p>Continuous guidance, homework help, and feedback between lessons. Your tutor isn't just a teacher — they're a partner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS PREVIEW -->
+<section class="subjects-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>What we <em>teach</em></h2>
+      <p class="section-header-subtitle">
+        Seven specialized subjects, taught one-on-one. Click any to explore the curriculum, methodology, and pricing in depth.
+      </p>
+    </div>
+
+    <div class="subjects-grid">
+      <a href="programs.html#english" class="subject-card observe" style="--bar-color: #e8a838">
+        <div>
+          <div class="subject-flag">🇬🇧</div>
+          <h3>English</h3>
+          <p>School support, exam prep (IELTS/TOEFL), Business English, Speaking Club.</p>
+        </div>
+        <span class="subject-link">Explore →</span>
+      </a>
+      <a href="programs.html#latvian" class="subject-card observe" style="--bar-color: #b8552c">
+        <div>
+          <div class="subject-flag">🇱🇻</div>
+          <h3>Latvian</h3>
+          <p>Curriculum support, grammar, comprehension, and exam preparation.</p>
+        </div>
+        <span class="subject-link">Explore →</span>
+      </a>
+      <a href="programs.html#russian" class="subject-card observe" style="--bar-color: #c4791f">
+        <div>
+          <div class="subject-flag">🇷🇺</div>
+          <h3>Russian</h3>
+          <p>Beginner to advanced. Speaking, listening, reading, writing — practical first.</p>
+        </div>
+        <span class="subject-link">Explore →</span>
+      </a>
+      <a href="programs.html#spanish" class="subject-card observe" style="--bar-color: #d4441a">
+        <div>
+          <div class="subject-flag">🇪🇸</div>
+          <h3>Spanish</h3>
+          <p>Step-by-step development for travel, study, or everyday life.</p>
+        </div>
+        <span class="subject-link">Explore →</span>
+      </a>
+      <a href="programs.html#german" class="subject-card observe" style="--bar-color: #2d251c">
+        <div>
+          <div class="subject-flag">🇩🇪</div>
+          <h3>German</h3>
+          <p>Strong foundations, structured progression for studies, work, or relocation.</p>
+        </div>
+        <span class="subject-link">Explore →</span>
+      </a>
+      <a href="programs.html#portuguese" class="subject-card observe" style="--bar-color: #5a8a3a">
+        <div>
+          <div class="subject-flag">🇵🇹</div>
+          <h3>Portuguese</h3>
+          <p>Core skills with conversational practice for fluency and travel.</p>
+        </div>
+        <span class="subject-link">Explore →</span>
+      </a>
+      <a href="programs.html#math" class="subject-card observe" style="--bar-color: #6b5d4a">
+        <div>
+          <div class="subject-flag">∑</div>
+          <h3>Mathematics</h3>
+          <p>School-level support: arithmetic, algebra, geometry, problem-solving.</p>
+        </div>
+        <span class="subject-link">Explore →</span>
+      </a>
+      <a href="programs.html#business" class="subject-card observe" style="--bar-color: #1a1410; background: var(--color-ink); color: var(--color-cream);">
+        <div>
+          <div class="subject-flag">💼</div>
+          <h3 style="color: var(--color-cream)">Business English</h3>
+          <p style="color: rgba(250,246,239,0.7)">Industry vocabulary, academic writing, business simulations.</p>
+        </div>
+        <span class="subject-link" style="color: var(--color-sun)">Featured →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2>Our students <em>love us</em></h2>
+      <p class="section-header-subtitle">
+        Real stories from real learners. Some have become teachers themselves. All have crossed the finish line — and started new ones.
+      </p>
+    </div>
+
+    <div class="testimonials-wrapper">
+      <div class="testimonial-slide active">
+        <p class="testimonial-quote">
+          My English teacher Mr. Elyor deserves all appreciation and respect. I learned from him how to be confident, patient, and to study hard. I gained various ways of thinking and processing ideas, which improved me positively.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Dostonbek</div>
+            <div class="testimonial-role">B2 · IELTS Track</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">
+          The course Elyor conducted was impeccable, useful and interesting. I really liked his teaching style — not ordinary and less formal — and it allowed me to be myself, without hesitation, and speak fluent English.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Aleksandra</div>
+            <div class="testimonial-role">Speaking B1 · General English</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">
+          I'm so proud to have such an amazing instructor and friend like Elyor. He helped me improve my English skills. The way he teaches students is amazing. Thanks for the motivation and support.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Aziz, 25</div>
+            <div class="testimonial-role">English Improvement</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">
+          Mr. Elior's lessons were the most valuable and unforgettable. Thanks to him, today I am an English teacher and have improved all my English skills. I want to thank him for all the effort and work spent on us.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">B</div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Bekzod, 19</div>
+            <div class="testimonial-role">Now an English Teacher</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="testimonial-quote">
+          It was great to study English with Mr. Elyor. I've gained a lot of experience from him and want to thank him for all the lessons he taught us.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div class="testimonial-info">
+            <div class="testimonial-name">Maruf, 23</div>
+            <div class="testimonial-role">General English</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-dots">
+      <button class="testimonial-dot active" aria-label="Slide 1"></button>
+      <button class="testimonial-dot" aria-label="Slide 2"></button>
+      <button class="testimonial-dot" aria-label="Slide 3"></button>
+      <button class="testimonial-dot" aria-label="Slide 4"></button>
+      <button class="testimonial-dot" aria-label="Slide 5"></button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-container">
+    <span class="cta-discount">First-class offer · 15% off</span>
+    <h2>Ready to <em>begin?</em><br>Your first lesson awaits.</h2>
+    <p>Sign up for your first class and receive 15% off. No commitments, no contracts — just a conversation about where you want to go and how we can help you get there.</p>
+    <a href="contact.html" class="btn btn-primary">Claim Your Discount →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Apricus</h3>
+        <p class="footer-motto">Ad astra per aspera</p>
+        <p style="margin-top: 1rem;">Online education platform delivering personalized, results-driven language and academic training for students and professionals worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://wa.me/37128491663">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/apricus_service">Instagram</a></li>
+          <li><a href="https://www.facebook.com/apricuservice/">Facebook</a></li>
+          <li><a href="mailto:apricus.edu.service@gmail.com">Email</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>+371 28491663</li>
+          <li>apricus.edu.service@gmail.com</li>
+          <li>Riga, Latvia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Apricus Online School · All rights reserved</div>
+      <div class="footer-motto">Through difficulties to the stars ✦</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
