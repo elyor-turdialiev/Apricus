@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Apricus Online School</title>
+<meta name="description" content="Frequently asked questions about Apricus Online School: lessons, pricing, methodology, scheduling, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%231e3a5f'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%23d97706'/%3E%3C/svg%3E">
+<style>
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .faq-categories {
+    position: sticky;
+    top: 100px;
+  }
+
+  .faq-categories h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .faq-cat-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    color: var(--text-body);
+    font-size: 0.9375rem;
+    margin-bottom: 0.25rem;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+
+  .faq-cat-link:hover {
+    background: var(--gray-50);
+    color: var(--navy);
+  }
+
+  .faq-cat-link.active {
+    background: var(--gray-50);
+    color: var(--navy);
+    border-left-color: var(--amber);
+    font-weight: 600;
+  }
+
+  .faq-category {
+    margin-bottom: 4rem;
+    scroll-margin-top: 120px;
+  }
+
+  .faq-category-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--amber);
+  }
+
+  .faq-item {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+    transition: all 0.2s;
+  }
+
+  .faq-item:hover {
+    border-color: var(--gray-300);
+  }
+
+  .faq-item.open {
+    border-color: var(--navy);
+    box-shadow: var(--shadow);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--navy);
+    font-size: 1.125rem;
+    line-height: 1;
+    transition: all 0.3s;
+  }
+
+  .faq-item.open .faq-icon {
+    background: var(--amber);
+    color: var(--white);
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 500px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-body);
+    line-height: 1.65;
+    font-size: 0.9375rem;
+  }
+
+  .faq-answer-inner p:not(:last-child) { margin-bottom: 0.75rem; }
+  .faq-answer-inner ul { margin: 0.5rem 0 0 1.25rem; }
+  .faq-answer-inner ul li { padding: 0.25rem 0; }
+  .faq-answer-inner strong { color: var(--navy); }
+  .faq-answer-inner a { color: var(--amber); text-decoration: underline; }
+
+  /* Help banner */
+  .help-card {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .help-card h2 { color: var(--white); margin-bottom: 1rem; }
+  .help-card p { color: rgba(255,255,255,0.85); font-size: 1.0625rem; margin-bottom: 2rem; }
+
+  .help-card .btn-primary { background: var(--amber); border-color: var(--amber); }
+  .help-card .btn-outline { color: var(--white); border-color: var(--white); }
+  .help-card .btn-outline:hover { background: var(--white); color: var(--navy); }
+
+  @media (max-width: 968px) {
+    .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .faq-categories {
+      position: static;
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .faq-categories h3 { display: none; }
+    .faq-cat-link { white-space: nowrap; padding: 0.5rem 1rem; border-left: none; border: 1.5px solid var(--border); border-radius: 100px; }
+    .faq-cat-link.active { border-color: var(--navy); border-left: 1.5px solid var(--navy); background: var(--navy); color: var(--white); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="vlog.html">Vlog</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Class</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / FAQ</div>
+    <span class="eyebrow">Frequently asked questions</span>
+    <h1>Questions, answered honestly.</h1>
+    <p class="lead">Everything you might be wondering about lessons, pricing, methodology, schedules, and what to expect when you start.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="faq-layout">
+
+      <aside class="faq-categories">
+        <h3>Categories</h3>
+        <a href="#getting-started" class="faq-cat-link active">Getting Started</a>
+        <a href="#lessons" class="faq-cat-link">Lessons & Format</a>
+        <a href="#pricing-faq" class="faq-cat-link">Pricing & Payment</a>
+        <a href="#methodology" class="faq-cat-link">Methodology</a>
+        <a href="#tech" class="faq-cat-link">Technical & Practical</a>
+      </aside>
+
+      <div>
+
+        <div class="faq-category" id="getting-started">
+          <h2 class="faq-category-title">Getting Started</h2>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>How do I book my first lesson?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>The simplest way is to <strong>send us a message on WhatsApp</strong> at +371 28491663 or fill out the form on our <a href="contact.html">Contact page</a>. We'll respond within 24 hours, ask a few questions to understand your goals and level, and schedule your first lesson at a time that works for you.</p>
+              <p>Your first lesson includes <strong>15% off</strong> automatically — no codes, no hassle.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Do I need to know my level beforehand?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>No. During your first lesson, your tutor will assess your current level through a friendly conversation and a few practical exercises. From there, we build a learning plan tailored to where you are right now.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What's the minimum age for students?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>We work with school-age students from approximately <strong>10 years old</strong> through adults. The youngest learners typically join for English, Latvian, or Mathematics support. Adult learners are welcome across all programs.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Can I try a lesson before committing?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Absolutely. Our <strong>One-Hour Teacher</strong> plan (€25) is designed exactly for this. It's a full standalone lesson — not a watered-down trial — and you decide afterwards whether to continue.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="lessons">
+          <h2 class="faq-category-title">Lessons & Format</h2>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>How long is each lesson?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Standard lessons run <strong>60 minutes</strong>. For younger students or intensive prep work, we can adjust to 45 or 90 minutes depending on what serves the learning best.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What platform do we use for lessons?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>We use <strong>Zoom or Google Meet</strong> by default — whichever you're more comfortable with. Both work on any device with a camera and microphone. We send you the meeting link before each session.</p>
+              <p>For materials, homework, and notes, we typically use shared Google Docs and WhatsApp.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Are lessons truly one-on-one?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes — <strong>100% of our lessons are individual</strong>. The only exception is our optional Online Speaking Club, which is intentionally group-based to give learners a community of peers to practice with. Even then, group sizes are kept small.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>How often should I take lessons?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Most students see steady progress with <strong>2–3 lessons per week</strong>. Exam-prep students often go intensive (4–5 per week), while semester-long learners may settle into 1–2. Your tutor will recommend a cadence based on your goals.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What if I need to reschedule?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Life happens. We ask for at least <strong>12 hours notice</strong> for cancellations or rescheduling, after which we can move your lesson to another available slot at no extra cost.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="pricing-faq">
+          <h2 class="faq-category-title">Pricing & Payment</h2>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What payment methods do you accept?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>We accept <strong>bank transfers</strong> (Swedbank and other major Latvian/EU banks) and international wire transfers. For international students outside the EU, we can arrange alternative payment methods on request.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Do I pay per lesson or upfront?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Depends on the plan:</p>
+              <ul>
+                <li><strong>One-Hour Teacher</strong> — paid per session</li>
+                <li><strong>Monthly programs</strong> — paid at the start of each month</li>
+                <li><strong>Semester Assistant</strong> — paid upfront for the full semester</li>
+              </ul>
+              <p>We don't auto-renew. You decide each cycle whether to continue.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Are there discounts for siblings or referrals?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes. We offer <strong>10% off for siblings</strong> studying simultaneously, and a <strong>referral bonus</strong> for any student you bring to Apricus (one free lesson for both of you).</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Do you provide invoices?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes, professionally formatted invoices are issued for every payment. They can be addressed to individuals, companies, or sent to a parent/sponsor.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="methodology">
+          <h2 class="faq-category-title">Methodology</h2>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What teaching method do you use?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>We use a <strong>communicative approach</strong> grounded in solid grammar fundamentals. You'll be speaking from lesson one, but you'll also understand <em>why</em> the language works the way it does.</p>
+              <p>Our methods are calibrated per student — what works for an IELTS candidate differs from what works for a 12-year-old learning Spanish for travel.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>How do you track progress?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Three ways:</p>
+              <ul>
+                <li><strong>Regular consultations</strong> where we review what's working</li>
+                <li><strong>Mock exams and assessments</strong> for exam-prep students</li>
+                <li><strong>Skill checkpoints</strong> at key milestones (CEFR levels, semester ends)</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Can I change tutors if it's not working?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Of course. The tutor-student fit matters enormously. Just let us know — no awkward conversations needed.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="tech">
+          <h2 class="faq-category-title">Technical & Practical</h2>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What do I need to start?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Just three things:</p>
+              <ul>
+                <li>A computer, tablet, or phone with a working camera and microphone</li>
+                <li>A reliable internet connection</li>
+                <li>A quiet space for your lesson</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>Do you teach across time zones?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Yes. We're based in Riga (EET / UTC+2), but currently teach students across Europe, Central Asia, the Middle East, and beyond. Lesson times are scheduled in your local time zone.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What languages can I take lessons in?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>Lessons are conducted primarily in <strong>English, Russian, or Latvian</strong>, depending on what you're comfortable with and what subject you're studying.</p>
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question"><span>What happens during school holidays?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+              <p>You decide. Many students pause during long holidays; others use them for intensive study. We're flexible and will work with whatever rhythm fits your life.</p>
+            </div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="help-card observe">
+      <h2>Still have questions?</h2>
+      <p>We'd rather have a quick conversation than make you guess. Reach out and we'll respond within a day.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Get in touch →</a>
+        <a href="https://wa.me/37128491663" class="btn btn-outline">WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+        <p>Online education platform offering personalized one-on-one lessons in languages, exam preparation, business English, and mathematics.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/apricus_service" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+          <a href="https://www.facebook.com/apricuservice/" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/37128491663" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>School</h4><ul><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="vlog.html">Vlog</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://wa.me/37128491663">WhatsApp</a></li></ul></div>
+      <div class="footer-col"><h4>Get in touch</h4><ul><li>+371 28491663</li><li>apricus.edu.service@gmail.com</li><li>Riga, Latvia</li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>© 2026 Apricus Online School. All rights reserved.</div><div>Through difficulties to the stars.</div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

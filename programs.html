@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programs — Apricus Online School</title>
+<meta name="description" content="Detailed curriculum for English, Business English, Latvian, Russian, Spanish, German, Portuguese, and Mathematics — at Apricus Online School.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%231e3a5f'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%23d97706'/%3E%3C/svg%3E">
+<style>
+  /* Tabs */
+  .programs-tabs {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 73px;
+    z-index: 50;
+  }
+
+  .programs-tabs-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-px);
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .program-tab {
+    padding: 0.5rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-body);
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .program-tab:hover {
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+
+  .program-tab.active {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+
+  /* Program block */
+  .program-block {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 140px;
+  }
+
+  .program-block:nth-child(even) { background: var(--bg-alt); }
+
+  .program-block.featured {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .program-block.featured h2,
+  .program-block.featured h3 { color: var(--white); }
+
+  .program-block.featured .eyebrow { color: var(--amber-light); }
+
+  .program-block.featured p { color: rgba(255, 255, 255, 0.85); }
+
+  .program-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+  }
+
+  .program-sidebar {
+    position: sticky;
+    top: 200px;
+    align-self: start;
+  }
+
+  .program-sidebar h2 {
+    margin-bottom: 1rem;
+  }
+
+  .program-sidebar p {
+    color: var(--text-body);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  .program-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .program-tag {
+    background: var(--gray-100);
+    color: var(--navy);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .program-block.featured .program-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--amber-light);
+  }
+
+  .program-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 1.25rem;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .program-block.featured .program-meta {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+  }
+
+  .meta-label {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .program-block.featured .meta-label { color: rgba(255,255,255,0.7); }
+
+  .meta-value {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .program-block.featured .meta-value { color: var(--white); }
+
+  .program-content h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .program-block.featured .program-content h3 { color: var(--amber-light); }
+
+  .program-content h3:first-child { margin-top: 0; }
+
+  .program-content ul {
+    list-style: none;
+  }
+
+  .program-content ul li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .program-block.featured .program-content ul li {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .program-content ul li::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: var(--amber);
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") no-repeat center / contain;
+    margin-top: 2px;
+  }
+
+  .program-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .program-block.featured .btn-primary { background: var(--amber); border-color: var(--amber); }
+  .program-block.featured .btn-outline { color: var(--white); border-color: var(--white); }
+  .program-block.featured .btn-outline:hover { background: var(--white); color: var(--navy); }
+
+  @media (max-width: 968px) {
+    .program-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .program-sidebar { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html" class="active">Programs</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="vlog.html">Vlog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Class</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Programs</div>
+    <span class="eyebrow">Programs · Eight Disciplines</span>
+    <h1>Curriculum, methodology, and outcomes — laid out clearly.</h1>
+    <p class="lead">Eight specialized programs, each designed around the student's level, goals, and pace. Every program is one-on-one, online, and tailored.</p>
+  </div>
+</header>
+
+<div class="programs-tabs">
+  <div class="programs-tabs-inner">
+    <a href="#english" class="program-tab active">English</a>
+    <a href="#business" class="program-tab">Business English</a>
+    <a href="#latvian" class="program-tab">Latvian</a>
+    <a href="#russian" class="program-tab">Russian</a>
+    <a href="#spanish" class="program-tab">Spanish</a>
+    <a href="#german" class="program-tab">German</a>
+    <a href="#portuguese" class="program-tab">Portuguese</a>
+    <a href="#math" class="program-tab">Mathematics</a>
+  </div>
+</div>
+
+<!-- ENGLISH -->
+<section class="program-block" id="english">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">Most popular</span>
+        <h2>English Programs</h2>
+        <p>School support, exam preparation, Business English, and Speaking Club — combined into one comprehensive learning path tailored to your level and goals.</p>
+        <div class="program-tags">
+          <span class="program-tag">A1 — A2</span>
+          <span class="program-tag">B1 — B2</span>
+          <span class="program-tag">C1 — C2</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1, online</span></div>
+          <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-value">Flexible</span></div>
+          <div class="meta-row"><span class="meta-label">Starting</span><span class="meta-value">€20 / lesson</span></div>
+        </div>
+      </aside>
+
+      <div class="program-content observe">
+        <h3>What we offer</h3>
+        <ul>
+          <li><div><strong>Gradual improvement</strong> in reading, writing, listening, and speaking — calibrated to your starting point.</div></li>
+          <li><div><strong>Personalized study plans</strong> adapted to your learning style and rate of progress.</div></li>
+          <li><div><strong>Targeted preparation</strong> for school exams, IELTS, TOEFL, and other international tests.</div></li>
+          <li><div><strong>Online Speaking Club</strong> to build confidence, fluency, and natural communication patterns.</div></li>
+        </ul>
+        <h3>How we work</h3>
+        <ul>
+          <li><div><strong>Individual one-on-one lessons</strong> — your tutor focuses on you, not a cohort.</div></li>
+          <li><div><strong>Regular consultations</strong> and progress tracking so improvement is visible.</div></li>
+          <li><div><strong>Mock exams</strong> and practical speaking practice in low-stakes environments.</div></li>
+          <li><div><strong>Support with homework</strong>, projects, and exam preparation between sessions.</div></li>
+        </ul>
+        <h3>Why choose this program</h3>
+        <ul>
+          <li><div>Covers all learning needs in one structured program — no need to enroll in multiple courses.</div></li>
+          <li><div>Strengthens both academic performance and communication confidence.</div></li>
+          <li><div>Suitable for students, exam candidates, and working professionals alike.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Start English →</a>
+          <a href="pricing.html" class="btn btn-outline">View pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS ENGLISH (FEATURED) -->
+<section class="program-block featured" id="business">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">Premium program</span>
+        <h2>Business English</h2>
+        <p>For professionals who need English to work, not just to pass. Industry-specific vocabulary, academic writing, and real business simulations.</p>
+        <div class="program-tags">
+          <span class="program-tag">B1+</span>
+          <span class="program-tag">Intensive</span>
+          <span class="program-tag">Career-focused</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1, online</span></div>
+          <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-value">Monthly</span></div>
+          <div class="meta-row"><span class="meta-label">Price</span><span class="meta-value">€259.99 / mo</span></div>
+        </div>
+      </aside>
+
+      <div class="program-content observe">
+        <h3>What's included</h3>
+        <ul>
+          <li><div><strong>Industry-specific vocabulary</strong> — finance, tech, marketing, law, consulting. Tailored to your field.</div></li>
+          <li><div><strong>Academic writing</strong> — proposals, reports, executive summaries, professional emails.</div></li>
+          <li><div><strong>Public speaking & presentations</strong> — structure, delivery, handling Q&A confidently.</div></li>
+          <li><div><strong>Business simulations</strong> — negotiations, pitches, interviews, performance reviews.</div></li>
+        </ul>
+        <h3>Real-world focus</h3>
+        <ul>
+          <li><div>Lessons built around situations you'll actually face — board meetings, client calls, conferences.</div></li>
+          <li><div>Cultural fluency for international business contexts (US, UK, EU norms).</div></li>
+          <li><div>Email and Slack writing — the unglamorous skills nobody teaches but everyone needs.</div></li>
+          <li><div>Industry case studies and roleplays drawn from real corporate environments.</div></li>
+        </ul>
+        <h3>Best suited for</h3>
+        <ul>
+          <li><div>Mid-career professionals transitioning to English-speaking workplaces.</div></li>
+          <li><div>Founders pitching to international investors or expanding to global markets.</div></li>
+          <li><div>Knowledge workers, consultants, and managers in multinational teams.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Enroll in Business English →</a>
+          <a href="pricing.html" class="btn btn-outline">See plans</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LATVIAN -->
+<section class="program-block" id="latvian">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">Latvian</span>
+        <h2>Latvian Studies</h2>
+        <p>For students and learners who want to strengthen their Latvian for school, exams, or everyday communication.</p>
+        <div class="program-tags">
+          <span class="program-tag">School support</span>
+          <span class="program-tag">All levels</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1</span></div>
+          <div class="meta-row"><span class="meta-label">Starting</span><span class="meta-value">€25 / lesson</span></div>
+        </div>
+      </aside>
+      <div class="program-content observe">
+        <h3>What we offer</h3>
+        <ul>
+          <li><div><strong>School curriculum support</strong> — homework help and topic mastery.</div></li>
+          <li><div><strong>Grammar, writing, and reading comprehension</strong> built progressively.</div></li>
+          <li><div><strong>Test and exam preparation</strong> with mock papers and feedback.</div></li>
+          <li><div><strong>Clear explanations</strong> of current and upcoming topics.</div></li>
+        </ul>
+        <h3>Why choose Latvian</h3>
+        <ul>
+          <li><div>Improves grades and language confidence at school.</div></li>
+          <li><div>Personalized approach based on individual strengths and gaps.</div></li>
+          <li><div>Strong foundation for long-term academic success.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Book a Latvian lesson →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RUSSIAN -->
+<section class="program-block" id="russian">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">Russian</span>
+        <h2>Russian Lessons</h2>
+        <p>Russian for beginners and advanced learners. Practical usage, clear grammar, and structured progression.</p>
+        <div class="program-tags">
+          <span class="program-tag">Beginner</span>
+          <span class="program-tag">Intermediate</span>
+          <span class="program-tag">Advanced</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1</span></div>
+          <div class="meta-row"><span class="meta-label">Starting</span><span class="meta-value">€25 / lesson</span></div>
+        </div>
+      </aside>
+      <div class="program-content observe">
+        <h3>What we offer</h3>
+        <ul>
+          <li><div><strong>Four core skills</strong> — speaking, listening, reading, and writing, balanced from the start.</div></li>
+          <li><div><strong>Grammar explained clearly</strong>, with practical examples and context.</div></li>
+          <li><div><strong>School support and exam preparation</strong> for Russian-language curricula.</div></li>
+          <li><div><strong>Conversational practice</strong> for real-life situations — work, travel, daily interactions.</div></li>
+        </ul>
+        <h3>Why choose Russian</h3>
+        <ul>
+          <li><div>Balanced focus on theory and communication.</div></li>
+          <li><div>Individual lessons tailored to your level, with no fixed pace.</div></li>
+          <li><div>Ideal for school, work, or personal development.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Start Russian →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPANISH -->
+<section class="program-block" id="spanish">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">Spanish</span>
+        <h2>Spanish from Scratch</h2>
+        <p>Learn Spanish from the basics to confident communication for travel, studies, or everyday life.</p>
+        <div class="program-tags">
+          <span class="program-tag">A1 — A2</span>
+          <span class="program-tag">B1 — B2</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1</span></div>
+          <div class="meta-row"><span class="meta-label">Starting</span><span class="meta-value">€25 / lesson</span></div>
+        </div>
+      </aside>
+      <div class="program-content observe">
+        <h3>What we offer</h3>
+        <ul>
+          <li><div><strong>Step-by-step development</strong> — from greetings to fluent conversation.</div></li>
+          <li><div><strong>Speaking and listening</strong> emphasized early — you'll talk from lesson one.</div></li>
+          <li><div><strong>Grammar and vocabulary</strong> taught in service of real communication.</div></li>
+          <li><div><strong>Practical conversations</strong> on real-life topics.</div></li>
+        </ul>
+        <h3>Why choose Spanish</h3>
+        <ul>
+          <li><div>Engaging, motivating lessons that don't feel like a chore.</div></li>
+          <li><div>Personalized learning pace — slow when you need it, fast when you're ready.</div></li>
+          <li><div>Builds confidence in speaking from the very start.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Begin Spanish →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GERMAN -->
+<section class="program-block" id="german">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">German</span>
+        <h2>German Studies</h2>
+        <p>Strong foundations and confident communication. Designed for studies, work, or relocation.</p>
+        <div class="program-tags">
+          <span class="program-tag">A1 — B2</span>
+          <span class="program-tag">Structured</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1</span></div>
+          <div class="meta-row"><span class="meta-label">Starting</span><span class="meta-value">€25 / lesson</span></div>
+        </div>
+      </aside>
+      <div class="program-content observe">
+        <h3>What we offer</h3>
+        <ul>
+          <li><div><strong>Language basics</strong> and structured progression through CEFR levels.</div></li>
+          <li><div><strong>Grammar, vocabulary, and speaking practice</strong>.</div></li>
+          <li><div><strong>School support and exam preparation</strong>.</div></li>
+          <li><div><strong>Practical everyday communication</strong> for life in German-speaking countries.</div></li>
+        </ul>
+        <h3>Why choose German</h3>
+        <ul>
+          <li><div>Logical, well-structured learning approach matching the language itself.</div></li>
+          <li><div>Individual lessons adapted to your level and goals.</div></li>
+          <li><div>Ideal for studies, work, or relocation planning.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Start German →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTUGUESE -->
+<section class="program-block" id="portuguese">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">Portuguese</span>
+        <h2>Portuguese Lessons</h2>
+        <p>For beginners and learners looking to improve fluency in Portuguese.</p>
+        <div class="program-tags">
+          <span class="program-tag">Beginner</span>
+          <span class="program-tag">Intermediate</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1</span></div>
+          <div class="meta-row"><span class="meta-label">Starting</span><span class="meta-value">€25 / lesson</span></div>
+        </div>
+      </aside>
+      <div class="program-content observe">
+        <h3>What we offer</h3>
+        <ul>
+          <li><div><strong>Core language skills</strong> — speaking, listening, reading, and writing in balanced doses.</div></li>
+          <li><div><strong>Grammar and pronunciation support</strong> — Portuguese pronunciation is tricky, we make it intuitive.</div></li>
+          <li><div><strong>Conversational practice</strong> woven into every lesson.</div></li>
+          <li><div><strong>Individual study plans</strong> for steady, measurable progress.</div></li>
+        </ul>
+        <h3>Why choose Portuguese</h3>
+        <ul>
+          <li><div>Clear structure and practical focus.</div></li>
+          <li><div>Suitable for travel, work, or personal growth.</div></li>
+          <li><div>One-on-one guidance for steady progress.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Try Portuguese →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATH -->
+<section class="program-block" id="math">
+  <div class="container">
+    <div class="program-grid">
+      <aside class="program-sidebar">
+        <span class="eyebrow">Mathematics</span>
+        <h2>Mathematics Tutoring</h2>
+        <p>School-level mathematics support focused on understanding, confidence, and results.</p>
+        <div class="program-tags">
+          <span class="program-tag">Arithmetic</span>
+          <span class="program-tag">Algebra</span>
+          <span class="program-tag">Geometry</span>
+        </div>
+        <div class="program-meta">
+          <div class="meta-row"><span class="meta-label">Format</span><span class="meta-value">1-on-1</span></div>
+          <div class="meta-row"><span class="meta-label">Starting</span><span class="meta-value">€25 / lesson</span></div>
+        </div>
+      </aside>
+      <div class="program-content observe">
+        <h3>What we offer</h3>
+        <ul>
+          <li><div><strong>Gradual improvement</strong> across arithmetic, algebra, geometry, and problem-solving.</div></li>
+          <li><div><strong>Personalized study program</strong> adapted to the student's level and pace.</div></li>
+          <li><div><strong>Clear explanations</strong> of complex topics — focus on the "why," not just the "how."</div></li>
+          <li><div><strong>Homework, test, and exam preparation</strong> with practical worksheets.</div></li>
+        </ul>
+        <h3>Why choose Mathematics</h3>
+        <ul>
+          <li><div>Complements the school curriculum.</div></li>
+          <li><div>Improves grades and understanding of difficult topics.</div></li>
+          <li><div>Builds confidence through regular practice and individual attention.</div></li>
+          <li><div>Ideal for long-term academic success and exam preparation.</div></li>
+        </ul>
+        <div class="program-cta">
+          <a href="contact.html" class="btn btn-primary">Book a math lesson →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+        <p>Online education platform offering personalized one-on-one lessons in languages, exam preparation, business English, and mathematics.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/apricus_service" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+          <a href="https://www.facebook.com/apricuservice/" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/37128491663" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>School</h4><ul><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="vlog.html">Vlog</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://wa.me/37128491663">WhatsApp</a></li></ul></div>
+      <div class="footer-col"><h4>Get in touch</h4><ul><li>+371 28491663</li><li>apricus.edu.service@gmail.com</li><li>Riga, Latvia</li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>© 2026 Apricus Online School. All rights reserved.</div><div>Through difficulties to the stars.</div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

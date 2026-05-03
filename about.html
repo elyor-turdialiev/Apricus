@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Apricus Online School</title>
+<meta name="description" content="Founded in 2022, Apricus is a personalized online school offering language, exam, and academic tutoring across Europe and Central Asia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%231e3a5f'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%23d97706'/%3E%3C/svg%3E">
+<style>
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .story-image-wrap {
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .story-image-wrap .img-placeholder { width: 100%; height: 100%; border-radius: var(--radius-lg); }
+
+  .story-content h2 { margin-bottom: 1.5rem; }
+
+  .story-content p {
+    color: var(--text-body);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    font-size: 1.0625rem;
+  }
+
+  /* Values */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .value-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: all 0.25s;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .value-card:hover {
+    border-color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .value-num {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+
+  .value-card h3 { font-size: 1.1875rem; margin-bottom: 0.5rem; }
+  .value-card p { color: var(--text-body); font-size: 0.9375rem; line-height: 1.6; margin: 0; }
+
+  /* Timeline */
+  .timeline {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 92px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--amber);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--amber);
+    z-index: 2;
+  }
+
+  .timeline-year {
+    font-weight: 800;
+    color: var(--navy);
+    font-size: 1.125rem;
+    text-align: right;
+  }
+
+  .timeline-content h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .timeline-content p { color: var(--text-body); line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .values-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 8px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.75rem; padding-left: 40px; padding-bottom: 2rem; }
+    .timeline-item::before { left: 0; }
+    .timeline-year { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="vlog.html">Vlog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Class</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / About</div>
+    <span class="eyebrow">About Apricus</span>
+    <h1>An online school built around the student.</h1>
+    <p class="lead">Apricus Online School was founded in 2022 with a simple belief: every learner deserves a tutor who knows their name, their goals, and their pace.</p>
+  </div>
+</header>
+
+<!-- STORY -->
+<section class="section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="observe">
+        <div class="story-image-wrap">
+          <div class="img-placeholder">
+            <span>📷 About photo<br><small style="opacity:0.7">images/about.jpg<br>(600×750px)</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="story-content observe">
+        <span class="eyebrow">Our story</span>
+        <h2>From a single classroom to seven subjects.</h2>
+        <p>Apricus started as a focused English teaching practice. The first cohort included future teachers, IELTS candidates, and professionals seeking fluency for their careers.</p>
+        <p>As students' needs evolved, we expanded — first to other languages (Latvian, Russian, Spanish, German, Portuguese), then to mathematics, then to specialized programs like Business English and exam preparation.</p>
+        <p>Today, Apricus serves students across Europe, Central Asia, and beyond. The mission hasn't changed: deliver real, measurable progress through truly personalized instruction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header observe">
+      <span class="eyebrow">Our values</span>
+      <h2>What we stand for</h2>
+      <p>Six principles that shape every lesson, every learning plan, and every relationship we build with students.</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card observe">
+        <div class="value-num">01</div>
+        <div>
+          <h3>Personalized learning</h3>
+          <p>Every plan is tailored to your level, goals, and pace. No one-size-fits-all curricula.</p>
+        </div>
+      </div>
+      <div class="value-card observe">
+        <div class="value-num">02</div>
+        <div>
+          <h3>Real, measurable results</h3>
+          <p>Confidence in speaking, fluency in writing, mastery of practical skills — and a way to measure them.</p>
+        </div>
+      </div>
+      <div class="value-card observe">
+        <div class="value-num">03</div>
+        <div>
+          <h3>Proven + modern methods</h3>
+          <p>Strong fundamentals meet interactive materials. We honor what works while embracing what's new.</p>
+        </div>
+      </div>
+      <div class="value-card observe">
+        <div class="value-num">04</div>
+        <div>
+          <h3>One platform, many paths</h3>
+          <p>Languages, Business English, exam prep, and mathematics — all under one consistent standard.</p>
+        </div>
+      </div>
+      <div class="value-card observe">
+        <div class="value-num">05</div>
+        <div>
+          <h3>Flexible format</h3>
+          <p>Online, on your schedule. Your classroom is wherever you have a screen and a moment.</p>
+        </div>
+      </div>
+      <div class="value-card observe">
+        <div class="value-num">06</div>
+        <div>
+          <h3>Ongoing support</h3>
+          <p>Continuous guidance and feedback between lessons. Your tutor is a partner, not just a teacher.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header observe">
+      <span class="eyebrow">Our journey</span>
+      <h2>Three years of growth</h2>
+      <p>From a single classroom in 2022 to a multi-subject school serving learners across continents.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item observe">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-content">
+          <h3>The beginning</h3>
+          <p>Apricus is founded with a focused mission: high-quality, personalized English instruction. The first students included future teachers, IELTS candidates, and working professionals.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-content">
+          <h3>Beyond English</h3>
+          <p>Driven by student demand, we expand into Latvian, Russian, Spanish, and German. The Online Speaking Club launches.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">
+          <h3>New disciplines</h3>
+          <p>Mathematics joins the roster as a natural extension for academic support. Business English deepens with industry simulations and writing modules.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h3>Portuguese & Semester Assistant</h3>
+          <p>Portuguese is added. The Personal Semester Assistant program launches for full-school-year academic support.</p>
+        </div>
+      </div>
+      <div class="timeline-item observe">
+        <div class="timeline-year">2026</div>
+        <div class="timeline-content">
+          <h3>Today</h3>
+          <p>Apricus serves students across Europe, Central Asia, and beyond — with the same commitment to personalization that launched the school.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-alt" style="text-align:center; padding: 4rem 0;">
+  <div class="container">
+    <div class="observe">
+      <h2>Ready to start your journey?</h2>
+      <p class="lead" style="max-width:600px; margin: 1rem auto 2rem;">Book a free 15-minute consultation to discuss your goals and find the right program.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Get started →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+        <p>Online education platform offering personalized one-on-one lessons in languages, exam preparation, business English, and mathematics.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/apricus_service" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+          <a href="https://www.facebook.com/apricuservice/" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/37128491663" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>School</h4><ul><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="vlog.html">Vlog</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://wa.me/37128491663">WhatsApp</a></li></ul></div>
+      <div class="footer-col"><h4>Get in touch</h4><ul><li>+371 28491663</li><li>apricus.edu.service@gmail.com</li><li>Riga, Latvia</li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>© 2026 Apricus Online School. All rights reserved.</div><div>Through difficulties to the stars.</div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

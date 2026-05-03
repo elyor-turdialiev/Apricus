@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Apricus Online School</title>
+<meta name="description" content="Get in touch with Apricus Online School. Book a free consultation, ask a question, or claim your 15% off first lesson.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%231e3a5f'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%23d97706'/%3E%3C/svg%3E">
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.2s;
+  }
+
+  .contact-method:hover {
+    border-color: var(--navy);
+    transform: translateX(4px);
+    box-shadow: var(--shadow);
+  }
+
+  .contact-method-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    background: rgba(217, 119, 6, 0.1);
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-method-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-method-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .contact-method-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .contact-socials {
+    display: flex;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-socials a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .contact-socials a:hover {
+    background: var(--navy);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* Form */
+  .form-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+  }
+
+  .form-card h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .form-card .lead {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* Hours */
+  .hours-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hours-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .hours-card:hover {
+    border-color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .hours-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    background: rgba(217, 119, 6, 0.1);
+    color: var(--amber);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hours-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hours-card .hours-time {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .hours-card p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 968px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .hours-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 1.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="vlog.html">Vlog</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book a Class</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
+    <span class="eyebrow">Contact us</span>
+    <h1>Let's start a conversation.</h1>
+    <p class="lead">Book a free 15-minute consultation, ask a question about a program, or claim your 15% off first lesson — whatever works for you.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: Contact methods -->
+      <div class="observe">
+        <span class="eyebrow">Get in touch</span>
+        <h2 style="margin-bottom: 1.5rem;">Reach us directly.</h2>
+        <p style="color: var(--text-body); line-height: 1.65; margin-bottom: 2rem;">We typically reply within a few hours during business hours, and within a day on weekends. WhatsApp tends to be fastest if you need a quick answer.</p>
+
+        <div class="contact-methods">
+          <a href="https://wa.me/37128491663" class="contact-method">
+            <div class="contact-method-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+            </div>
+            <div class="contact-method-content">
+              <span class="contact-method-label">WhatsApp · Fastest</span>
+              <span class="contact-method-value">+371 28491663</span>
+            </div>
+          </a>
+
+          <a href="tel:+37128491663" class="contact-method">
+            <div class="contact-method-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="contact-method-content">
+              <span class="contact-method-label">Phone</span>
+              <span class="contact-method-value">+371 28491663</span>
+            </div>
+          </a>
+
+          <a href="mailto:apricus.edu.service@gmail.com" class="contact-method">
+            <div class="contact-method-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-method-content">
+              <span class="contact-method-label">Email</span>
+              <span class="contact-method-value">apricus.edu.service@gmail.com</span>
+            </div>
+          </a>
+
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-method-content">
+              <span class="contact-method-label">Location</span>
+              <span class="contact-method-value">Riga, Latvia · Online worldwide</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <a href="https://www.instagram.com/apricus_service" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+          </a>
+          <a href="https://www.facebook.com/apricuservice/" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/37128491663" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="observe">
+        <div class="form-card">
+          <h2>Send us a message</h2>
+          <p class="lead">Tell us what you're hoping to achieve. We'll get back to you within a day.</p>
+
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Smith">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="jane@example.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone (optional)</label>
+                <input type="tel" id="phone" name="phone" placeholder="+371 ...">
+              </div>
+              <div class="form-group">
+                <label for="program">Program of interest</label>
+                <select id="program" name="program">
+                  <option value="">Choose a program</option>
+                  <option>English</option>
+                  <option>Business English</option>
+                  <option>IELTS / TOEFL Prep</option>
+                  <option>Latvian</option>
+                  <option>Russian</option>
+                  <option>Spanish</option>
+                  <option>German</option>
+                  <option>Portuguese</option>
+                  <option>Mathematics</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your message</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your goals, current level, schedule preferences, or any questions..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send message →</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header observe">
+      <span class="eyebrow">Working hours</span>
+      <h2>When you can reach us</h2>
+      <p>Lessons are scheduled flexibly across time zones. For inquiries, here's when we're typically active.</p>
+    </div>
+
+    <div class="hours-grid">
+      <div class="hours-card observe">
+        <div class="hours-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Office hours</h3>
+        <div class="hours-time">Mon — Sat</div>
+        <p>09:00 — 21:00 EET<br>(Riga local time)</p>
+      </div>
+
+      <div class="hours-card observe">
+        <div class="hours-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Reply time</h3>
+        <div class="hours-time">~24 hours</div>
+        <p>Faster on WhatsApp. We always respond within a day, including weekends.</p>
+      </div>
+
+      <div class="hours-card observe">
+        <div class="hours-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Coverage</h3>
+        <div class="hours-time">Worldwide</div>
+        <p>Lessons scheduled in your local time zone — Europe, Central Asia, the Middle East, and beyond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"></span><span>Apricus</span></a>
+        <p>Online education platform offering personalized one-on-one lessons in languages, exam preparation, business English, and mathematics.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/apricus_service" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+          <a href="https://www.facebook.com/apricuservice/" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/37128491663" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>School</h4><ul><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="vlog.html">Vlog</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://wa.me/37128491663">WhatsApp</a></li></ul></div>
+      <div class="footer-col"><h4>Get in touch</h4><ul><li>+371 28491663</li><li>apricus.edu.service@gmail.com</li><li>Riga, Latvia</li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>© 2026 Apricus Online School. All rights reserved.</div><div>Through difficulties to the stars.</div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
